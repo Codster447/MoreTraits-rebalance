@@ -3,7 +3,7 @@ require "TimedActions/ISBaseTimedAction"
 ISBurnCorpseAction = ISBaseTimedAction:derive("ISBurnCorpseAction");
 
 function ISBurnCorpseAction:isValid()
-	if self.character:HasTrait("burned") and self.character:getModData().MTModVersion >= 3 then
+	if self.character:HasTrait("burned") and self.character:getModData().MTModVersion <= 3 then
 		HaloTextHelper.addText(self.character, getText("UI_burnedstop"), HaloTextHelper.getColorRed());
 		return false
 	end
