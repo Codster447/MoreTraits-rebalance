@@ -3,7 +3,7 @@ require "TimedActions/ISBaseTimedAction"
 ISFireplaceLightFromLiterature = ISBaseTimedAction:derive("ISFireplaceLightFromLiterature")
 
 function ISFireplaceLightFromLiterature:isValid()
-	if self.character:HasTrait("burned") and self.character:getModData().MTModVersion >= 3 then
+	if self.character:HasTrait("burned") and self.character:getModData().MTModVersion <= 3 then
 		HaloTextHelper.addText(self.character, getText("UI_burnedstop"), HaloTextHelper.getColorRed());
 		return
 	end
