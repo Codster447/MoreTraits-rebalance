@@ -77,6 +77,7 @@ playerdatatable[50] = {"isSleeping", false}
 playerdatatable[51] = {"QuickRestActive", false}
 playerdatatable[52] = {"QuickRestEndurance", -1}
 playerdatatable[53] = {"QuickRestFinished", false}
+playerdatatable[54] = {"iSuperImmuneChance", 0}
 
 local function AddXP(player, perk, amount)
 	if getCore():getGameVersion():getMajor() > 41 or (getCore():getGameVersion():getMajor() == 41 and getCore():getGameVersion():getMinor() >= 66) then
@@ -2537,7 +2538,7 @@ function SuperImmune(_player, _playerdata)
 	local playerdata = _playerdata;
 	local bodydamage = player:getBodyDamage();
 	if player:HasTrait("superimmune") then
-		if bodydamage:isInfected() == true then
+		if bodydamage:isInfected() == true and math.random(0,99) < iSuperImmuneChance then
 			bodydamage:setInfected(false);
 			bodydamage:setInfectionMortalityDuration(-1);
 			bodydamage:setInfectionTime(-1);
